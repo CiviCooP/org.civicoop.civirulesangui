@@ -8,17 +8,20 @@
         <textarea type="text" name="description" ng-model="rule.description" class="crm-form-textarea" cols="60" rows="4"></textarea>
       </div>
       <div crm-ui-field="{title: ts('Trigger')}">
-        <select
+        <select  class="crm-select"
                 crm-ui-id="ruleDialogForm.trigger_id"
                 crm-ui-select="{dropdownAutoWidth : true}"
                 name="trigger_id"
                 ng-model="rule.trigger.id"
                 required
         >
-          <option ng-repeat="trigger in model.triggers.values"
+          <option ng-repeat="trigger in model.triggers"
                   ng-value="trigger.id">{{trigger.label}}</option>
         </select>
       </div>
+
+      <button ng-click="save()">{{ ts('Save') }}</button>
+      <button ng-click="cancel()">{{ ts('Cancel') }}</button>
     </div>
   </div>
 
