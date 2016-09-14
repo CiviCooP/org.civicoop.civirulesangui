@@ -37,7 +37,7 @@
       var model = {
         name: 'New rule'
       };
-      dialogService.open('previewComponentDialog', '~/angjj/RuleDialogCtrl.html', model, options);
+      dialogService.open('previewComponentDialog', '~/civirulesangui/RuleDialogCtrl.html', model, options);
     }
   });
 
