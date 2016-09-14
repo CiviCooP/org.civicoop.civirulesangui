@@ -51,11 +51,28 @@
         height: 'auto',
         title: 'New rule'
       });
+      var copyRule = _.clone(rule);
       var model = {
         triggers: triggers.values,
-        rule: rule
+        rule: copyRule
       };
-      dialogService.open('ruleDialog', '~/civirulesangui/RuleDialogCtrl.html', model, options);
+      dialogService.open('ruleDialog', '~/civirulesangui/RuleDialogCtrl.html', model, options).then(
+        function(result) {
+          // Save is clicked
+          if (rule.id) {
+            // Edit mode
+            rule.label = copyRule.label;
+            rule.description = copyRule.description;
+            rule.trigger_id = copyRule.trigger_id;
+          } else {
+            // Add mode
+            rules.values.push(copyRule); // This line does not work!
+          }
+        },
+        function(error) {
+          // Cancel is clicked
+        }
+      );
     }
   });
 

@@ -27,6 +27,9 @@
           description: rule.description,
           trigger_id: rule.trigger_id
         }).then(function (result) {
+          if (!rule.id) {
+            rule.id = result.id;
+          }
           dialogService.close('ruleDialog');
         })
       );
