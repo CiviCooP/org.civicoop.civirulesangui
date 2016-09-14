@@ -10,6 +10,9 @@
         resolve: {
           rules: function(crmApi) {
             return crmApi('CiviRuleRule', 'get', {});
+          },
+          triggers: function(crmApi) {
+            return crmApi('CiviRuleTrigger', 'get', {});
           }
         }
       });
@@ -20,7 +23,7 @@
   //   $scope -- This is the set of variables shared between JS and HTML.
   //   crmApi, crmStatus, crmUiHelp -- These are services provided by civicrm-core.
   //   myContact -- The current contact, defined above in config().
-  angular.module('civirulesangui').controller('CivirulesanguiCivirulesRuleCtrl', function($scope, crmApi, crmStatus, crmUiHelp, dialogService, rules) {
+  angular.module('civirulesangui').controller('CivirulesanguiCivirulesRuleCtrl', function($scope, crmApi, crmStatus, crmUiHelp, dialogService, rules, triggers) {
     // The ts() and hs() functions help load strings for this module.
     var ts = $scope.ts = CRM.ts('civirulesangui');
     // We have rules available in JS. We also want to reference it in HTML.
@@ -30,12 +33,12 @@
     $scope.ruleDialog = function RuleDialog() {
       var options = CRM.utils.adjustDialogDefaults({
         autoOpen: false,
-        width: '40%',
+        width: '80%',
         height: 'auto',
         title: 'New rule'
       });
       var model = {
-        name: 'New rule'
+        triggers: triggers
       };
       dialogService.open('previewComponentDialog', '~/civirulesangui/RuleDialogCtrl.html', model, options);
     }
