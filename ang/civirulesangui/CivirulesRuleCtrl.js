@@ -67,7 +67,7 @@
             rule.trigger_id = copyRule.trigger_id;
           } else {
             // Add mode
-            rules.values.push(copyRule); // This line does not work!
+            $scope.rules[copyRule.id] = copyRule;
           }
         },
         function(error) {
