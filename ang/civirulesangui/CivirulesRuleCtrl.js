@@ -38,7 +38,7 @@
         title: 'New rule'
       });
       var model = {
-        triggers: triggers
+        triggers: triggers.values
       };
       dialogService.open('previewComponentDialog', '~/civirulesangui/RuleDialogCtrl.html', model, options);
     }

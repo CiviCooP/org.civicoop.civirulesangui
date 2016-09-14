@@ -1,20 +1,5 @@
 (function(angular, $, _) {
 
-  /*angular.module('civirulesangui').config(function($routeProvider) {
-    $routeProvider.when('/civirules', {
-      controller: 'RuleDialogCtrl',
-      templateUrl: '~/civirulesangui/RuleDialogCtrl.html',
-
-      // If you need to look up data when opening the page, list it out
-      // under "resolve".
-      resolve: {
-        triggers: function(crmApi) {
-          return crmApi('CiviRuleTrigger', 'get', {});
-        }
-      }
-    });
-  });*/
-
   // The controller uses *injection*. This default injects a few things:
   //   $scope -- This is the set of variables shared between JS and HTML.
   //   crmApi, crmStatus, crmUiHelp -- These are services provided by civicrm-core.
