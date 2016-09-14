@@ -29,8 +29,8 @@
     // We have rules and triggers available in JS. We also want to reference it in HTML.
     $scope.rules = rules.values;
     $scope.triggers = triggers.values;
-    
-    $scope.newRule = function() {
+
+    $scope.newRule = function newRule() {
       var rule = {
         id: false,
         label: 'New rule',
@@ -39,7 +39,8 @@
       };
       ruleDialog(rule);
     }
-    $scope.editRule = function(rule) {
+
+    $scope.editRule = function editRule(rule) {
       ruleDialog(rule);
     }
 
