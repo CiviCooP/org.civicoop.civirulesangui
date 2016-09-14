@@ -37,8 +37,17 @@
         height: 'auto',
         title: 'New rule'
       });
+      var rule = {
+        label: 'New rule',
+        description: '',
+        trigger: {
+          id: 1,
+          label: 'Activity is added'
+        }
+      };
       var model = {
-        triggers: triggers.values
+        triggers: triggers.values,
+        rule: rule
       };
       dialogService.open('ruleDialog', '~/civirulesangui/RuleDialogCtrl.html', model, options);
     }

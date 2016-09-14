@@ -9,16 +9,7 @@
     var ts = $scope.ts = CRM.ts('civirulesangui');
     var hs = $scope.hs = crmUiHelp({file: 'CRM/civirulesangui/RuleDialogCtrl'}); // See: templates/CRM/civirulesangui/RuleDialogCtrl.hlp
 
-
-    var rule = {
-      label: 'New rule',
-      description: '',
-      trigger: {
-        id: 1,
-        label: 'Activity is added'
-      }
-    };
-
+    var rule = $scope.model.rule;
     $scope.rule = rule;
 
     $scope.cancel = function() {
