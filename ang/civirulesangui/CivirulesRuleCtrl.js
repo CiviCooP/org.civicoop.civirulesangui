@@ -32,12 +32,10 @@
 
     $scope.newRule = function() {
       var rule = {
+        id: false,
         label: 'New rule',
         description: '',
-        trigger: {
-          id: 1,
-          label: 'Activity is added'
-        }
+        trigger_id: null
       };
       ruleDialog(rule);
     }

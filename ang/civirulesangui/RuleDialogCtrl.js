@@ -22,9 +22,10 @@
         {start: ts('Saving...'), success: ts('Saved')},
         // The save action. Note that crmApi() returns a promise.
         crmApi('CiviRuleRule', 'create', {
+          id: rule.id,
           label: rule.label,
           description: rule.description,
-          trigger_id: rule.trigger.id
+          trigger_id: rule.trigger_id
         }).then(function (result) {
           dialogService.close('ruleDialog');
         })
