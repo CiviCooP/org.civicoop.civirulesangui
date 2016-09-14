@@ -10,7 +10,7 @@
     var hs = $scope.hs = crmUiHelp({file: 'CRM/civirulesangui/RuleDialogCtrl'}); // See: templates/CRM/civirulesangui/RuleDialogCtrl.hlp
 
 
-    $scope.rule = {
+    var rule = {
       label: 'New rule',
       description: '',
       trigger: {
@@ -19,16 +19,17 @@
       }
     };
 
+    $scope.rule = rule;
 
     $scope.save = function save() {
       return crmStatus(
         // Status messages. For defaults, just use "{}"
         {start: ts('Saving...'), success: ts('Saved')},
         // The save action. Note that crmApi() returns a promise.
-        crmApi('Contact', 'create', {
-          id: myContact.id,
-          first_name: myContact.first_name,
-          last_name: myContact.last_name
+        crmApi('CiviRuleRule', 'create', {
+          label: rule.label,
+          description: rule.description,
+          trigger_id: rule.trigger.id
         })
       );
     };
