@@ -40,7 +40,7 @@
       var model = {
         triggers: triggers.values
       };
-      dialogService.open('previewComponentDialog', '~/civirulesangui/RuleDialogCtrl.html', model, options);
+      dialogService.open('ruleDialog', '~/civirulesangui/RuleDialogCtrl.html', model, options);
     }
   });
 
