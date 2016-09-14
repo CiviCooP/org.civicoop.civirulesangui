@@ -16,7 +16,7 @@
 
     <tbody ng-repeat="rule in rules">
     <tr>
-      <td ng-click="editRule(rule)">{{ rule.label }}</td>
+      <td><a class="crm-hover-button action-item" ng-click="editRule(rule)">{{ rule.label }}</a></td>
       <td>{{rule.description}}</td>
       <td>{{rule.trigger_id}}</td>
       <td>{{rule.is_active}}</td>
