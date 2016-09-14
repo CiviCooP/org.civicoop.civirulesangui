@@ -1,11 +1,11 @@
 <div crm-ui-debug="rules"></div>
 <div class="crm-container">
   <h1>Civirules</h1>
-  <button ng-click="ruleDialog()">New rule</button>
+  <button ng-click="newRule()">New rule</button>
   <table>
     <tbody ng-repeat="rule in rules">
     <tr>
-      <td>{{ rule.label }}</td>
+      <td ng-click="editRule(rule)">{{ rule.label }}</td>
       <td>{{rule.description}}</td>
       <td><button ng-click="ruleDeleteDialog()">Delete</button> </td></tr>
     </tbody>
