@@ -1,4 +1,5 @@
 <div crm-ui-debug="rules"></div>
+<div crm-ui-debug="triggers"></div>
 <div class="crm-container">
   <h1>Civirules</h1>
 
@@ -18,7 +19,7 @@
     <tr>
       <td><a class="crm-hover-button action-item" ng-click="editRule(rule)">{{ rule.label }}</a></td>
       <td>{{rule.description}}</td>
-      <td>{{rule.trigger_id}}</td>
+      <td>{{rule.trigger}}</td>
       <td>{{rule.is_active}}</td>
       <td><button ng-click="deleteRule(rule)">Delete</button> </td></tr>
     </tbody>

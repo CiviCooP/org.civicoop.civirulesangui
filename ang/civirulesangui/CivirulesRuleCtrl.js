@@ -26,11 +26,11 @@
   angular.module('civirulesangui').controller('CivirulesanguiCivirulesRuleCtrl', function($scope, crmApi, crmStatus, crmUiHelp, dialogService, rules, triggers) {
     // The ts() and hs() functions help load strings for this module.
     var ts = $scope.ts = CRM.ts('civirulesangui');
-    // We have rules available in JS. We also want to reference it in HTML.
+    // We have rules and triggers available in JS. We also want to reference it in HTML.
     $scope.rules = rules.values;
+    $scope.triggers = triggers.values;
 
-
-    $scope.newRule = function() {
+    $scope.newRule = function newRule() {
       var rule = {
         id: false,
         label: 'New rule',
@@ -39,7 +39,8 @@
       };
       ruleDialog(rule);
     }
-    $scope.editRule = function(rule) {
+
+    $scope.editRule = function editRule(rule) {
       ruleDialog(rule);
     }
 
