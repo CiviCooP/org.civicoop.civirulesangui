@@ -2,7 +2,16 @@
 <div class="crm-container">
   <h1>Civirules</h1>
   <button ng-click="ruleDialog()">New rule</button>
-  <table>
+  <table class="display">
+    <thead>
+    <tr>
+      <th>{{ts('Label')}}</th>
+      <th>{{ts('Description')}}</th>
+      <th>{{ts('Enabled?')}}</th>
+      <th></th>
+    </tr>
+    </thead>
+
     <tbody ng-repeat="rule in rules">
     <tr>
       <td>{{ rule.label }}</td>
