@@ -29,8 +29,24 @@
     // We have rules available in JS. We also want to reference it in HTML.
     $scope.rules = rules.values;
 
+
+    $scope.newRule = function() {
+      var rule = {
+        label: 'New rule',
+        description: '',
+        trigger: {
+          id: 1,
+          label: 'Activity is added'
+        }
+      };
+      ruleDialog(rule);
+    }
+    $scope.editRule = function(rule) {
+      ruleDialog(rule);
+    }
+
     // Open a dialog for editing the advanced recipient options.
-    $scope.ruleDialog = function RuleDialog() {
+    var ruleDialog = function(rule) {
       var options = CRM.utils.adjustDialogDefaults({
         autoOpen: false,
         width: '80%',
@@ -38,7 +54,8 @@
         title: 'New rule'
       });
       var model = {
-        triggers: triggers.values
+        triggers: triggers.values,
+        rule: rule
       };
       dialogService.open('ruleDialog', '~/civirulesangui/RuleDialogCtrl.html', model, options);
     }

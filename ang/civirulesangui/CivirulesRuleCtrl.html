@@ -1,12 +1,14 @@
 <div crm-ui-debug="rules"></div>
 <div class="crm-container">
   <h1>Civirules</h1>
-  <button ng-click="ruleDialog()">New rule</button>
+
+  <button ng-click="newRule()">New rule</button>
   <table class="display">
     <thead>
     <tr>
       <th>{{ts('Label')}}</th>
       <th>{{ts('Description')}}</th>
+      <th>{{ts('Trigger')}}</th>
       <th>{{ts('Enabled?')}}</th>
       <th></th>
     </tr>
@@ -14,9 +16,11 @@
 
     <tbody ng-repeat="rule in rules">
     <tr>
-      <td>{{ rule.label }}</td>
+      <td ng-click="editRule(rule)">{{ rule.label }}</td>
       <td>{{rule.description}}</td>
-      <td><button ng-click="ruleDeleteDialog()">Delete</button> </td></tr>
+      <td>{{rule.trigger_id}}</td>
+      <td>{{rule.is_active}}</td>
+      <td><button ng-click="deleteRule(rule)">Delete</button> </td></tr>
     </tbody>
   </table>
 
