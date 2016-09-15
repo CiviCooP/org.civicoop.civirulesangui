@@ -14,13 +14,14 @@
 
     $scope.cancel = function() {
       dialogService.cancel('ruleDialog');
+      CRM.alert.close90
     };
 
     $scope.save = function() {
       if ($scope.ruleDialogForm.$valid) {
         dialogService.close('ruleDialog', $scope.model);
       } else {
-        angular.element("[name='ruleDialogForm']").find('.ng-invalid').crmError(ts('Field is required'));
+        angular.element("[name='ruleDialogForm']").find('.ng-invalid').crmError(ts('Required'), ts('Field is required'), {expires: 20});
       }
     };
   });
