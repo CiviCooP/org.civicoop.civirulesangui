@@ -18,7 +18,7 @@
     </thead>
 
     <tbody>
-    <tr ng-repeat="rule in rules" class="crm-entity" ng-class-even="'even-row even'" ng-class-odd="'odd-row odd'">
+    <tr ng-repeat="rule in rules track by $index" class="crm-entity" ng-class-even="'even-row even'" ng-class-odd="'odd-row odd'">
       <td>{{rule.label}}</td>
       <td>{{rule.description}}</td>
       <td>{{triggers[rule.trigger_id].label}}</td>
