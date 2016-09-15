@@ -12,7 +12,7 @@
             return crmApi('CiviRuleRule', 'get', {});
           },
           triggers: function(crmApi) {
-            return crmApi('CiviRuleTrigger', 'get', {});
+            return crmApi('CiviRuleTrigger', 'get', {sequential:1});
           }
         }
       });
