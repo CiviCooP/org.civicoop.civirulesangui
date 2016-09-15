@@ -20,8 +20,7 @@
       if ($scope.ruleDialogForm.$valid) {
         dialogService.close('ruleDialog', $scope.model);
       } else {
-        CRM.alert(ts('Your rule is not valid. Please fill in the required fields'), ts('Your rule is not valid'), 'error');
-        angular.element("[name='ruleDialogForm']").find('.ng-invalid:visible:first').focus();
+        angular.element("[name='ruleDialogForm']").find('.ng-invalid').crmError(ts('Field is required'));
       }
     };
   });
