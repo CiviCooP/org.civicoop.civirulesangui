@@ -39,6 +39,18 @@
         });
     };
 
+    $scope.deleteRule = function deleteRule (rule) {
+      crmApi('CiviRuleRule', 'delete', {id: rule.id}, {
+        error: function (data) {
+          CRM.alert('Not able to delete CiviRule Rule, error message from API : ' + data.error_message, ts('Error attempting to delete CiviRule Rule'), 'error');
+        }
+      })
+        .then(function (data) {
+          delete rules.values[rule.id];
+          $scope.$digest();
+        });
+    };
+
     $scope.newRule = function newRule() {
       var rule = {
         id: false,
