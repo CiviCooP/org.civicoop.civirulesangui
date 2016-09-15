@@ -1,24 +1,42 @@
-<div class="crm-container" ng-controller="RuleDialogCtrl">
+<div class="civirulesRuleDialog" ng-controller="RuleDialogCtrl">
   <div class="crm-block" ng-form="ruleDialogForm" crm-ui-id-scope>
     <div class="crm-group">
       <div crm-ui-field="{title: ts('Label')}">
         <input type="text" name="label" ng-model="rule.label" class="crm-form-text" required>
       </div>
       <div crm-ui-field="{title: ts('Description')}">
-        <textarea type="text" name="description" ng-model="rule.description" class="crm-form-textarea" cols="60" rows="4"></textarea>
+        <input type="text" name="description" ng-model="rule.description" class="crm-form-text">
       </div>
+
+      <div crm-ui-field="{title: ts('Help text')}">
+        <textarea type="text" name="help_text" ng-model="rule.help_text" class="crm-form-textarea" cols="60" rows="4"></textarea>
+      </div>
+
+      <div crm-ui-field="{title: ts('Enabled')}">
+        <input
+                type='checkbox'
+                ng-model='rule.is_active'
+                ng-true-value="'1'"
+                ng-false-value="'0'"
+        />
+      </div>
+
       <div crm-ui-field="{title: ts('Trigger')}">
-        <select  class="crm-select"
+        <p ng-show="rule.id">{{ model.triggers[rule.trigger_id].label }}</p>
+        <select ng-hide="rule.id"
                 crm-ui-id="ruleDialogForm.trigger_id"
-                crm-ui-select="{dropdownAutoWidth : true}"
+                crm-ui-select="{dropdownAutoWidth : true, placeholder: ts('Trigger'), display: 'block'}"
                 name="trigger_id"
                 ng-model="rule.trigger_id"
                 required
         >
+          <option value=""></option>
           <option ng-repeat="trigger in model.triggers"
                   ng-value="trigger.id">{{trigger.label}}</option>
         </select>
       </div>
+
+
 
       <button ng-click="save()">{{ ts('Save') }}</button>
       <button ng-click="cancel()">{{ ts('Cancel') }}</button>

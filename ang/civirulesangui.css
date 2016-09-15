@@ -1,1 +1,9 @@
 /* Add any CSS rules for Angular module "civirulesangui" */
+.civirulesRuleDialog .crm-form-text,
+.civirulesRuleDialog select {
+    width: 250px;
+}
+.civirulesRuleDialog input[name="description"],
+.civirulesRuleDialog textarea[name="help_text"] {
+    width: 600px;
+}

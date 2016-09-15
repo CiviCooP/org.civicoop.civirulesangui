@@ -33,9 +33,11 @@
     $scope.newRule = function newRule() {
       var rule = {
         id: false,
-        label: 'New rule',
+        label: '',
         description: '',
-        trigger_id: null
+        help_text: '',
+        trigger_id: null,
+        is_active: '1'
       };
       ruleDialog(rule);
     }
@@ -64,7 +66,8 @@
             // Edit mode
             rule.label = copyRule.label;
             rule.description = copyRule.description;
-            rule.trigger_id = copyRule.trigger_id;
+            rule.help_text = copyRule.help_text;
+            rule.is_active = copyRule.is_active;
           } else {
             // Add mode
             $scope.rules[copyRule.id] = copyRule;
