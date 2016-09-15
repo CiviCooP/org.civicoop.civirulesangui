@@ -30,6 +30,15 @@
     $scope.rules = rules.values;
     $scope.triggers = triggers.values;
 
+    $scope.toggleRuleIsActive = function (rule) {
+      rule.is_active = (rule.is_active == '1') ? '0' : '1';
+      crmApi('CiviRuleRule', 'create', rule, true)
+        .catch(function (data) {
+          rule.is_active = (rule.is_active == '1') ? '0' : '1'; // revert
+          $scope.$digest();
+        });
+    };
+
     $scope.newRule = function newRule() {
       var rule = {
         id: false,
