@@ -88,17 +88,17 @@
             if (!copyRule.id) {
               copyRule.id = result.id;
             }
+            if (rule.id) {
+              // Edit mode
+              rule.label = copyRule.label;
+              rule.description = copyRule.description;
+              rule.help_text = copyRule.help_text;
+              rule.is_active = copyRule.is_active;
+            } else {
+              // Add mode
+              rules.values[copyRule.id] = copyRule;
+            }
           });
-          if (rule.id) {
-            // Edit mode
-            rule.label = copyRule.label;
-            rule.description = copyRule.description;
-            rule.help_text = copyRule.help_text;
-            rule.is_active = copyRule.is_active;
-          } else {
-            // Add mode
-            $scope.rules[copyRule.id] = copyRule;
-          }
         },
         function(error) {
           // Cancel is clicked
