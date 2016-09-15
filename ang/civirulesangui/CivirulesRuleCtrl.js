@@ -9,7 +9,12 @@
         // under "resolve".
         resolve: {
           rules: function(crmApi) {
-            return crmApi('CiviRuleRule', 'get', {});
+            return crmApi('CiviRuleRule', 'get', {})
+              .catch(function (data) {
+                if (data.error_code && data.error_code == 'unauthorized') {
+                  CRM.alert(ts('You do not have permissions to view this page'), ts('Permission denied'), 'error');
+                }
+              });
           },
           triggers: function(crmApi) {
             return crmApi('CiviRuleTrigger', 'get', {sequential:1});
