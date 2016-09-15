@@ -1,60 +1,70 @@
 <div class="civirulesRuleDialog" ng-controller="RuleDialogCtrl">
   <form class="crm-block" novalidate name="ruleDialogForm" crm-ui-id-scope>
-    <div class="crm-group">
-      <div crm-ui-field="{title: ts('Label'), name: 'ruleDialogForm.label'}">
-        <div>
-          <input
-                  crm-ui-id="ruleDialogForm.label"
-                  type="text"
-                  class="crm-form-text"
-                  ng-model="rule.label"
-                  placeholder="{{ ts('Label') }}"
-                  required
-                  name="label" />
-
-        </div>
-      </div>
-      <div crm-ui-field="{title: ts('Description')}">
-        <input type="text" name="description" ng-model="rule.description" class="crm-form-text">
-      </div>
-
-      <div crm-ui-field="{title: ts('Help text')}">
-        <textarea type="text" name="help_text" ng-model="rule.help_text" class="crm-form-textarea" cols="60" rows="4"></textarea>
-      </div>
-
-      <div crm-ui-field="{title: ts('Enabled')}">
-        <input
-                type='checkbox'
-                ng-model='rule.is_active'
-                ng-true-value="'1'"
-                ng-false-value="'0'"
-        />
-      </div>
-
-      <div crm-ui-field="{title: ts('Trigger'), name: 'ruleDialogForm.trigger_id'}">
-        <p ng-show="rule.id">{{ rule.id ? model.triggers[rule.trigger_id].label : '' }}</p>
-        <select ng-hide="rule.id"
-                crm-ui-id="ruleDialogForm.trigger_id"
-                crm-ui-select="{dropdownAutoWidth : true, placeholder: ts('Trigger')}"
-                name="trigger_id"
-                ng-model="rule.trigger_id"
-                required
-        >
-          <option value=""></option>
-          <option ng-repeat="trigger in model.triggers"
-                  ng-value="trigger.id">{{trigger.label}}</option>
-        </select>
-      </div>
-
-
-      <div class="crm-submit-buttons">
-        <button crm-icon="check" ng-click="save()" ng-disabled="ruleDialogForm.$invalid">
-          {{ts('Save')}}
-        </button>
-        <button crm-icon="close" ng-click="cancel()">
-          {{ts('Cancel')}}
-        </button>
-      </div>
+    <div crm-ui-wizard id="crm-container">
+      <div crm-ui-wizard-step="10" crm-title="ts('Rule Details')" ng-form="detailsForm">
+	    <div class="crm-group">
+	      <div crm-ui-field="{title: ts('Label'), name: 'ruleDialogForm.label'}">
+	        <div>
+	          <input
+	                  crm-ui-id="ruleDialogForm.label"
+	                  type="text"
+	                  class="crm-form-text"
+	                  ng-model="rule.label"
+	                  placeholder="{{ ts('Label') }}"
+	                  required
+	                  name="label" />
+	
+	        </div>
+	      </div>
+	      <div crm-ui-field="{title: ts('Description')}">
+	        <input type="text" name="description" ng-model="rule.description" class="crm-form-text">
+	      </div>
+	
+	      <div crm-ui-field="{title: ts('Help text')}">
+	        <textarea type="text" name="help_text" ng-model="rule.help_text" class="crm-form-textarea" cols="60" rows="4"></textarea>
+	      </div>
+	
+	      <div crm-ui-field="{title: ts('Enabled')}">
+	        <input
+	                type='checkbox'
+	                ng-model='rule.is_active'
+	                ng-true-value="'1'"
+	                ng-false-value="'0'"
+	        />
+	      </div>
+	
+	      <div crm-ui-field="{title: ts('Trigger'), name: 'ruleDialogForm.trigger_id'}">
+	        <p ng-show="rule.id">{{ rule.id ? model.triggers[rule.trigger_id].label : '' }}</p>
+	        <select ng-hide="rule.id"
+	                crm-ui-id="ruleDialogForm.trigger_id"
+	                crm-ui-select="{dropdownAutoWidth : true, placeholder: ts('Trigger')}"
+	                name="trigger_id"
+	                ng-model="rule.trigger_id"
+	                required
+	        >
+	          <option value=""></option>
+	          <option ng-repeat="trigger in model.triggers"
+	                  ng-value="trigger.id">{{trigger.label}}</option>
+	        </select>
+	      </div>
+	
+	    </div>
+	  </div>
+	  <div crm-ui-wizard-step="20" crm-title="ts('Conditions')" ng-form="conditionsForm">
+	    <p>Hier komen de condities</p>
+	  </div>
+		
+      <span crm-ui-wizard-buttons style="float:right;">
+	      <button crm-icon="disk" ng-click="save()" ng-disabled="ruleDialogForm.$invalid">
+	        {{ts('Save')}}
+	      </button>
+	      <button crm-icon="close" ng-click="cancel()">
+	        {{ts('Cancel')}}
+	      </button>
+      </span>
+	    
+	    
+	    
     </div>
   </form>
 
