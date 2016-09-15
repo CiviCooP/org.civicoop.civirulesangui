@@ -13,26 +13,16 @@
     $scope.rule = rule;
 
     $scope.cancel = function() {
-      dialogService.close('ruleDialog');
+      dialogService.cancel('ruleDialog');
     };
 
     $scope.save = function() {
-      return crmStatus(
-        // Status messages. For defaults, just use "{}"
-        {start: ts('Saving...'), success: ts('Saved')},
-        // The save action. Note that crmApi() returns a promise.
-        crmApi('CiviRuleRule', 'create', {
-          id: rule.id,
-          label: rule.label,
-          description: rule.description,
-          trigger_id: rule.trigger_id
-        }).then(function (result) {
-          if (!rule.id) {
-            rule.id = result.id;
-          }
-          dialogService.close('ruleDialog');
-        })
-      );
+      if ($scope.ruleDialogForm.$valid) {
+        dialogService.close('ruleDialog', $scope.model);
+      } else {
+        CRM.alert(ts('Your rule is not valid. Please fill in the required fields'), ts('Your rule is not valid'), 'error');
+        angular.element("[name='ruleDialogForm']").find('.ng-invalid:visible:first').focus();
+      }
     };
   });
 

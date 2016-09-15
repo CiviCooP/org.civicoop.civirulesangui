@@ -1,8 +1,18 @@
 <div class="civirulesRuleDialog" ng-controller="RuleDialogCtrl">
-  <div class="crm-block" ng-form="ruleDialogForm" crm-ui-id-scope>
+  <form class="crm-block" novalidate name="ruleDialogForm" crm-ui-id-scope>
     <div class="crm-group">
-      <div crm-ui-field="{title: ts('Label')}">
-        <input type="text" name="label" ng-model="rule.label" class="crm-form-text" required>
+      <div crm-ui-field="{title: ts('Label'), name: 'ruleDialogForm.label'}">
+        <div>
+          <input
+                  crm-ui-id="ruleDialogForm.label"
+                  type="text"
+                  class="crm-form-text"
+                  ng-model="rule.label"
+                  placeholder="{{ ts('Label') }}"
+                  required
+                  name="label" />
+
+        </div>
       </div>
       <div crm-ui-field="{title: ts('Description')}">
         <input type="text" name="description" ng-model="rule.description" class="crm-form-text">
@@ -41,6 +51,6 @@
       <button ng-click="save()">{{ ts('Save') }}</button>
       <button ng-click="cancel()">{{ ts('Cancel') }}</button>
     </div>
-  </div>
+  </form>
 
 </div>
