@@ -42,7 +42,8 @@
     $scope.deleteRule = function deleteRule (rule) {
       crmApi('CiviRuleRule', 'delete', {id: rule.id}, {
         error: function (data) {
-          CRM.alert('Not able to delete CiviRule Rule, error message from API : ' + data.error_message, ts('Error attempting to delete CiviRule Rule'), 'error');
+          CRM.alert(ts('Not able to delete CiviRule Rule, error message from API : ')
+            + data.error_message + ', contact your system administrator!', ts('Error attempting to delete CiviRule Rule'), 'error');
         }
       })
         .then(function (data) {
@@ -60,6 +61,10 @@
         is_active: '1'
       };
       ruleDialog(rule);
+    }
+
+    $scope.ruleHelpText = function ruleHelpText(rule) {
+      ruleHelpDialog(rule);
     }
 
     $scope.editRule = function editRule(rule) {
@@ -104,6 +109,17 @@
         }
       );
     }
-  });
 
+    // Open a dialog for the help text of the rule
+    var ruleHelpDialog = function(rule) {
+      var model = {helpText: rule.help_text};
+      var options = CRM.utils.adjustDialogDefaults({
+        autoOpen: false,
+        width: '60%',
+        height: 'auto',
+        title: 'Help text for rule ' + rule.label
+      });
+      dialogService.open('ruleHelpDialog', '~/civirulesangui/RuleHelpDialogCtrl.html', model, options);
+    }
+  });
 })(angular, CRM.$, CRM._);
