@@ -95,7 +95,7 @@
               rule.is_active = copyRule.is_active;
             } else {
               // Add mode
-              rules.values[copyRule.id] = copyRule;
+              rules.values[copyRule.id.toString()] = copyRule;
             }
           });
         },
