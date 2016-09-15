@@ -32,7 +32,7 @@
       </div>
 
       <div crm-ui-field="{title: ts('Trigger'), name: 'ruleDialogForm.trigger_id'}">
-        <p ng-show="rule.id">{{ model.triggers[rule.trigger_id].label }}</p>
+        <p ng-show="rule.id">{{ rule.id ? model.triggers[rule.trigger_id].label : '' }}</p>
         <select ng-hide="rule.id"
                 crm-ui-id="ruleDialogForm.trigger_id"
                 crm-ui-select="{dropdownAutoWidth : true, placeholder: ts('Trigger')}"
