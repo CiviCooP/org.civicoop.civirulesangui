@@ -3,7 +3,6 @@
 <div class="crm-container">
   <h1>Civirules</h1>
 
-  <button ng-click="newRule()">New rule</button>
   <table class="display">
     <thead>
     <tr>
@@ -15,17 +14,21 @@
     </tr>
     </thead>
 
-    <tbody ng-repeat="rule in rules">
-    <tr>
-      <td>{{ rule.label }}</td>
+    <tbody>
+    <tr ng-repeat="rule in rules" class="crm-entity" ng-class-even="'even-row even'" ng-class-odd="'odd-row odd'">
+      <td>{{rule.label}}</td>
       <td>{{rule.description}}</td>
       <td>{{rule.trigger}}</td>
-      <td>{{rule.is_active}}</td>
+      <td>{{rule.is_active == 1 ? ts('Yes') : ts('No')}}</td>
       <td>
         <a class="crm-hover-button action-item" ng-click="editRule(rule)">{{ ts('Edit') }}</a>
-        <button ng-click="deleteRule(rule)">Delete</button>
+        <a class="crm-hover-button action-item" ng-click="deleteRule(rule)">{{ ts('Delete') }}</a>
+        <a class="crm-hover-button action-item" ng-show="rule.is_active == 1" ng-click="toggleRuleIsActive(rule)">{{ts('Disable')}}</a>
+        <a class="crm-hover-button action-item" ng-show="rule.is_active == 0" ng-click="toggleRuleIsActive(rule)">{{ts('Enable')}}</a>
       </td></tr>
     </tbody>
   </table>
-
+  <div class="crm-submit-buttons">
+    <button ng-click="newRule()">{{ts('New rule')}}</button>
+  </div>
 </div>
