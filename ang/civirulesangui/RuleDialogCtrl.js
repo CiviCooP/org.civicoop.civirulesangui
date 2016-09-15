@@ -14,7 +14,6 @@
 
     $scope.cancel = function() {
       dialogService.cancel('ruleDialog');
-      CRM.alert.close90
     };
 
     $scope.save = function() {
