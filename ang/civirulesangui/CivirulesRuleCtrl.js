@@ -83,7 +83,12 @@
       dialogService.open('ruleDialog', '~/civirulesangui/RuleDialogCtrl.html', model, options).then(
         function(result) {
           // Save is clicked
-          crmApi('CiviRuleRule', 'create', copyRule);
+          crmApi('CiviRuleRule', 'create', copyRule)
+          .then(function (result) {
+            if (!copyRule.id) {
+              copyRule.id = result.id;
+            }
+          });
           if (rule.id) {
             // Edit mode
             rule.label = copyRule.label;
