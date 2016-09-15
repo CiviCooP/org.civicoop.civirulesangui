@@ -47,9 +47,14 @@
       </div>
 
 
-
-      <button ng-click="save()">{{ ts('Save') }}</button>
-      <button ng-click="cancel()">{{ ts('Cancel') }}</button>
+      <div class="crm-submit-buttons">
+        <button crm-icon="check" ng-click="save()" ng-disabled="ruleDialogForm.$invalid">
+          {{ts('Save')}}
+        </button>
+        <button crm-icon="close" ng-click="cancel()">
+          {{ts('Cancel')}}
+        </button>
+      </div>
     </div>
   </form>
 

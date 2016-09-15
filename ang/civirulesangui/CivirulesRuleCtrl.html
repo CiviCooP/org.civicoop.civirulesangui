@@ -18,7 +18,7 @@
     </thead>
 
     <tbody>
-    <tr ng-repeat="rule in rules" class="crm-entity" ng-class-even="'even-row even'" ng-class-odd="'odd-row odd'">
+    <tr ng-repeat="rule in rules track by $index" class="crm-entity" ng-class-even="'even-row even'" ng-class-odd="'odd-row odd'">
       <td>{{rule.label}}</td>
       <td>{{rule.description}} <a title="show help text for rule" class="helpicon" ng-click="ruleHelpText(rule)"></a></td>
       <td>{{triggers[rule.trigger_id].label}}</td>
@@ -32,6 +32,6 @@
     </tbody>
   </table>
   <div class="crm-submit-buttons">
-    <button ng-click="newRule()">{{ts('New rule')}}</button>
+    <a ng-click="newRule()" class="button"><span><div class="icon ui-icon-circle-plus"></div>{{ts('New Rule')}}</span></a>
   </div>
 </div>
