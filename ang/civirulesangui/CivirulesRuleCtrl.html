@@ -18,7 +18,7 @@
     <tr ng-repeat="rule in rules" class="crm-entity" ng-class-even="'even-row even'" ng-class-odd="'odd-row odd'">
       <td>{{rule.label}}</td>
       <td>{{rule.description}}</td>
-      <td>{{rule.trigger}}</td>
+      <td>{{triggers[rule.trigger_id].label}}</td>
       <td>{{rule.is_active == 1 ? ts('Yes') : ts('No')}}</td>
       <td>
         <a class="crm-hover-button action-item" ng-click="editRule(rule)">{{ ts('Edit') }}</a>
