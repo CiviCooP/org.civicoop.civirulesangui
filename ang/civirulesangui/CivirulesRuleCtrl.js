@@ -63,6 +63,10 @@
       ruleDialog(rule);
     }
 
+    $scope.ruleHelpText = function ruleHelpText(rule) {
+      ruleHelpDialog(rule);
+    }
+
     $scope.editRule = function editRule(rule) {
       ruleDialog(rule);
     }
@@ -84,27 +88,38 @@
         function(result) {
           // Save is clicked
           crmApi('CiviRuleRule', 'create', copyRule)
-          .then(function (result) {
-            if (!copyRule.id) {
-              copyRule.id = result.id;
-            }
-            if (rule.id) {
-              // Edit mode
-              rule.label = copyRule.label;
-              rule.description = copyRule.description;
-              rule.help_text = copyRule.help_text;
-              rule.is_active = copyRule.is_active;
-            } else {
-              // Add mode
-              rules.values[copyRule.id] = copyRule;
-            }
-          });
+            .then(function (result) {
+              if (!copyRule.id) {
+                copyRule.id = result.id;
+              }
+              if (rule.id) {
+                // Edit mode
+                rule.label = copyRule.label;
+                rule.description = copyRule.description;
+                rule.help_text = copyRule.help_text;
+                rule.is_active = copyRule.is_active;
+              } else {
+                // Add mode
+                rules.values[copyRule.id] = copyRule;
+              }
+            });
         },
         function(error) {
           // Cancel is clicked
         }
       );
     }
-  });
 
+    // Open a dialog for the help text of the rule
+    var ruleHelpDialog = function(rule) {
+      var model = {helpText: rule.help_text};
+      var options = CRM.utils.adjustDialogDefaults({
+        autoOpen: false,
+        width: '60%',
+        height: 'auto',
+        title: 'Help text for rule ' + rule.label
+      });
+      dialogService.open('ruleHelpDialog', '~/civirulesangui/RuleHelpDialogCtrl.html', model, options);
+    }
+  });
 })(angular, CRM.$, CRM._);
